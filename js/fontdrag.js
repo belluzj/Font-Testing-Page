@@ -61,8 +61,11 @@ droppedFileName,
 droppedFileSize;
 
 if(droppedFullFileName.match(acceptedFileExtensions)) {
+var count = dropListing.getElementsByTagName("li").length + 1;
 droppedFileName = droppedFullFileName.replace(/\..+$/,""); // Removes file extension from name
 droppedFileName = droppedFileName.replace(/\W+/g, "-"); // Replace any non alpha numeric characters with -
+// Add a counter to allow dropping several versions of the same file
+droppedFileName = '' + count + '_' + droppedFileName;
 droppedFileSize = Math.round(file.size/1024) + "kb";
 
 // Custom Addition by Andras Larsen
